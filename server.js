@@ -52,7 +52,10 @@ var User = mongoose.model("User", UserSchema);
 // });
 
 app.use(express.static(path.join(__dirname, "./D-app/dist/D-app")));
-app.use("/",  express.static(path.join(__dirname, "./D-app/dist/D-app")));
+
+// app.use('*', (req, res) => {
+//   res.sendFile(process.cwd() + "./D-app/dist/D-app/index.html");
+// })
 
 
 
