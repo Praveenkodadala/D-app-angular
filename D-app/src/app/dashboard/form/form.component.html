@@ -1,0 +1,101 @@
+<div class="box" [hidden]="formHidden">
+    <form [formGroup]="profileForm">
+        <h1 class="main" >Entrepreneurship Program Form</h1>
+        <hr>
+        <h2> ***NOTE***</h2>
+        <p>
+            By enrolling in this program one will develop entrepreneurship skills like mention below and many
+            more.... <br>
+            Business management skills ,Communication and active listening skills,Risk-taking skills, Networking
+            skills,
+            Critical thinking skills ,Problem-solving skills , Creative thinking skills,Customer service skills.
+            <br>
+            <b>Later we will provide some platforms to earn money </b>
+        </p>
+        <hr>
+        <h6> Important fields are marked by *</h6>
+
+
+        <div> Name*:<input type="text" id="name" placeholder=" full name" formControlName="name" required></div> <br>
+        <div> Phone no*: <input type="number" id="pnumber" placeholder="phone number" formControlName="pnumber"
+                required></div>
+        <br>
+        <div> Email: <input type="email" id="email" formControlName="email" placeholder="email"></div> <br>
+        <div>
+            State*: <select id="state" formControlName="state" required>
+                <option value="" disabled>Choose your state</option>
+                <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+            </select>
+        </div> <br>
+        <div> Age*: <input type="number" id="age" placeholder="your age" formControlName="age" required> </div> <br>
+        <div> Gender:
+            <select formControlName="gender">
+                <option value="" disabled>Choose your gender</option>
+                <option *ngFor="let gen of gender" [ngValue]="gen">{{gen}}</option>
+            </select>
+        </div> <br>
+        <div>
+            Qualification: <textarea rows="2" id="qualification" name="qualification" cols="20"
+                formControlName="qualification"> </textarea>
+        </div> <br>
+        <div>
+            Parents Occupation:<textarea rows="2" id="occupation" name="occupation" cols="20"
+                formControlName="occupation"> </textarea>
+        </div> <br>
+        <div>
+            Career Goals: <textarea rows="2" id="goals" name="goals" cols="20" formControlName="goals"> </textarea>
+        </div> <br>
+        <div>
+            Your Motivation: <textarea rows="2" id="motivation" name="motivation" cols="20"
+                formControlName="motivation"> </textarea>
+        </div> <br>
+        <div>
+            Submission Date*: <input type="datetime-local" name="date" id="date" value="date" formControlName="date"
+                required>
+        </div> <br>
+        <!-- <div>
+                photo : <input type="file" name="file" id="file" value="file">
+            </div> <br> -->
+        <!-- <div>
+            reset: <input type="reset" name="reset" id="reset" value="reset">
+        </div> <br> -->
+        <div>
+            <button class="button" type="submit" [disabled]="profileForm.invalid" (click)="onSubmit()"><b>Submit</b></button>
+        </div> <br>
+    </form>
+    <div>
+        <p>If you want submitted data, <span><a style="cursor: pointer;" (click)="openProfiles()"><b style="border-color: blueviolet;">click here</b></a></span> .</p>
+        
+    </div>
+</div>
+
+<div class="box" [hidden]="tableHidden">
+
+    <button class="buttons" (click)="backToForm()">Back</button>
+
+    <table id="customers">
+        <tr>
+            <th *ngFor="let head of headers">{{head | uppercase}}<br></th>
+        </tr>
+      
+        <tr *ngFor="let post of profiles" >
+         <td>{{post.date  | date}}</td>
+          <td>{{post.name}}</td>
+          <td>{{post.pnumber}}</td>
+          <td>{{post.email}}</td>
+          <td>{{post.state}}</td>
+          <td>{{post.age}}</td>
+          <td>{{post.gender}}</td>
+          <td>{{post.qualification}}</td>
+          <td>{{post.occupation}}</td>
+          <td>{{post.goals}}</td>
+          <td>{{post.motivation}}</td>
+          
+        
+        </tr>
+      
+      
+      </table>
+
+
+</div>
